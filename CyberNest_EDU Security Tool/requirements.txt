@@ -8,3 +8,5 @@ itertools
 urlparse
 os
 re
+hashlib
+random
