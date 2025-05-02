@@ -27,7 +27,7 @@ This tool is developed **strictly for educational and testing purposes**. Please
 | **1. Port (TCP) Scanner**                             | Scans the specified IP address to detect open TCP ports. Useful for basic network reconnaissance.  |
 | **2. Phishing Checker**                               | Analyzes a given URL and checks whether it could be a phishing site using predefined rules.         |
 | **3. Hash Cracker**                                   | Attempts to crack a given hash (MD5, SHA1, SHA256, SHA512) using a limited wordlist.                |
-| **4. Password Security Testing Tools**                | Includes tools for password strength prediction using a machine learning model trained on sample data. |
+| **4. Password Security Testing Tools** | Combines heuristic analysis, a machine learning model for password strength prediction, a brute-force tester for numeric PINs, and a recommendation engine that suggests improvements to weak passwords. |
 | **5. Social Engineering-Based Custom Wordlist Generator** | Generates a personalized wordlist using inputs like name, birth year, job, and location.              |
 
 .................................................................................................................................................................................................................................
