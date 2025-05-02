@@ -38,7 +38,7 @@ Follow the steps below to install and run the tool on a Linux system:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Omg/CyberNest_EDU-Security-Tool.git
+git clone https://github.com/OmerCeng/CyberNest_EDU-Security-Tool.git
 
 # Navigate to the project directory
 cd CyberNest_EDU-Security-Tool
