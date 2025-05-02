@@ -1,3 +1,5 @@
+
+
 ⚠️ Important Notes
 This tool is built for learning and testing purposes. As such:
 
@@ -11,6 +13,7 @@ The wordlist used for hash cracking is kept minimal for fast execution and clari
 
 
 ..............................................................................................................
+
 📦 Installation (Linux)
 git clone https://github.com/OmerCeng/CyberNest_EDU-Security-Tool.git
 cd /CyberNest_EDU-Security-Tool
