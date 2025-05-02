@@ -68,7 +68,7 @@ def train_or_load_model():
         label_encoder = load(ENCODER_PATH)
         return model, label_encoder
 
-  else: # Eğitim verisi ve modeli oluştur
+  else: 
         data = {
             'password': [
                 '12345', 'password', 'admin', 'P@ssw0rd', 'hello123', 'StrongPass!2',
@@ -93,12 +93,12 @@ def train_or_load_model():
         model.fit(X_train, y_train)
         os.makedirs("models", exist_ok=True)
 
-        # MODELİ KAYDET
+        # create model
         dump(model, "model.joblib")
         dump(label_encoder, "encoder.joblib")
         return model, label_encoder
 
-def run():  # <-- BU VAR
+def run():  
     model, label_encoder = train_or_load_model()
 
     print("""
