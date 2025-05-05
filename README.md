@@ -72,7 +72,7 @@ CyberNest_EDU-Security-Tool/
 ├── hash_cracker.py                 # Module to crack hashes using various algorithms and wordlists
 ├── phishing_checker.py             # Module to check if a URL is a potential phishing site
 ├── port_scanner.py                 # Basic TCP port scanner for given host and port range
-├── social_wordlist_generator.py    # Generates custom password wordlist using user info (for social engineering)
+├── password_generator.py           # Generates custom password wordlist using user info (for social engineering)
 ├── main.py                         # Command-line interface (CLI) to access all tools
 ├── requirements.txt                # Python dependencies required to run the project
 └── README.md                       # Project description and installation instructions
