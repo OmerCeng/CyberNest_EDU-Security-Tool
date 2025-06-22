@@ -68,8 +68,6 @@ def main():
 {GREEN}4. Password Security Testing Tools:{RESET} {WHITE}Tests password strength and detects weak passwords.{RESET}
 {YELLOW}5. Social Engineering-Based Custom Wordlist Generator:{RESET} {WHITE}Generates a custom wordlist based on personal information.{RESET}
 {RED}0. Exit:{RESET} {WHITE}Exits the program.{RESET}
-
-{CYAN}Her modülde herhangi bir giriş ekranında 'exit' yazarak ana menüye dönebilirsiniz.{RESET}
 """)
             input(f"\n{BOLD}{CYAN}Press Enter to return to the menu...{RESET}")
             continue  
