@@ -37,28 +37,27 @@ def main():
         if choice == '1':
             print(f"\n {YELLOW}======== Port Scanner ========{RESET}")
             from port_scanner import run
-            run()  # port_scanner.py içinde: input("Enter target IP address (or type 'exit' to return): ")
+            run()  
 
         elif choice == '2':
             print(f"\n {CYAN}======== Phishing Checker ========{RESET}")
             from phishing_checker import run
-            run()  # phishing_checker.py içinde: input("Enter URL to check (or type 'exit' to return): ")
+            run()  
 
         elif choice == '3':
             print(f"\n {MAGENTA}======== Hash Cracker ========{RESET}")
             from hash_cracker import run
-            run()  # hash_cracker.py içinde: input("Enter hash to crack (or type 'exit' to return): ")
+            run()  
 
         elif choice == '4':
             print(f"\n {GREEN}======== Password Security Testing Tools ========{RESET}")
             print(f"{YELLOW}======== Loading libraries... ========{RESET}")
             from password_checker import run 
-            run()  # password_checker.py içinde: input("Enter password to check (or type 'exit' to return): ")
-
+            run()  
         elif choice == '5':
             print(f"\n {YELLOW}======== Create Custom Wordlist ========{RESET}")
             from password_generator import run 
-            run()  # password_generator.py içinde: input("Enter base word (or type 'exit' to return): ")
+            run()  
 
         elif choice == '6':
             print(f"\n {WHITE}======== Help ========{RESET}")
@@ -73,7 +72,7 @@ def main():
 {CYAN}Her modülde herhangi bir giriş ekranında 'exit' yazarak ana menüye dönebilirsiniz.{RESET}
 """)
             input(f"\n{BOLD}{CYAN}Press Enter to return to the menu...{RESET}")
-            continue  # Show menu again after help, but don't print menu twice
+            continue  
 
         elif choice == '0':
             print(f"{RED}Exiting...{RESET}")
