@@ -44,7 +44,7 @@ def analyze_url(url):
 def run():
     print("""
     ==== Phishing URL Analyzer ====
-    This tool analyzes a URL to determine if it's potentially a phishing link.
+    (type 'exit' to return to the menu)
     """)
     url = input("Enter the URL to analyze (e.g., https://secure-login.example.com/login): ")
 

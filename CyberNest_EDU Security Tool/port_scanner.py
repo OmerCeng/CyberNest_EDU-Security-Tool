@@ -25,10 +25,20 @@ def port_scan(target, start_port=1, end_port=1024):
 
 
 def run():
-    target_ip = input("Enter target IP or domain: ")
-    start_port = int(input("Enter start port: "))
-    end_port = int(input("Enter end port: "))
-    port_scan(target_ip, start_port, end_port)
+    while True:
+        target = input("Enter target IP address (or type 'exit' to return): ")
+        if target.lower() == 'exit':
+            return
+        port_range = input("Enter port range (e.g. 20-80) (or type 'exit' to return): ")
+        if port_range.lower() == 'exit':
+            return
+        try:
+            start_port, end_port = map(int, port_range.split('-'))
+            port_scan(target, start_port, end_port)
+        except ValueError:
+            print("Invalid port range. Please enter in 'start-end' format.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
 
 
 
