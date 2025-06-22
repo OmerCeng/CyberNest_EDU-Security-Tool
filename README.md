@@ -44,10 +44,6 @@ git clone https://github.com/OmerCeng/CyberNest_EDU-Security-Tool.git
 # Navigate to the project directory
 cd CyberNest_EDU-Security-Tool
 
-# Create and activate a virtual environment
-python3 -m venv venv
-source venv/bin/activate
-
 # Install project dependencies
 pip install -r requirements.txt
 
