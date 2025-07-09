@@ -46,18 +46,33 @@ def run():
     ==== Phishing URL Analyzer ====
     (type 'exit' to return to the menu)
     """)
-    url = input("Enter the URL to analyze (e.g., https://secure-login.example.com/login): ")
-
-    score, reasons = analyze_url(url)
-
-    print("\n[Analysis Result]")
-    if score >= 3:
-        print("⚠️ This URL is likely a phishing attempt!")
-    elif score == 2:
-        print("⚠️ This URL may be suspicious.")
-    else:
-        print("✅ This URL appears to be safe.")
     
-    print("\n[Reasons]")
-    for r in reasons:
-        print(f"- {r}")
+    while True:
+        url = input("Enter the URL to analyze (e.g., https://secure-login.example.com/login): ")
+        
+        if url.lower() == 'exit':
+            break
+            
+        if not url.startswith(('http://', 'https://')):
+            print("❌ Please enter a valid URL starting with http:// or https://")
+            continue
+
+        score, reasons = analyze_url(url)
+
+        print("\n[Analysis Result]")
+        if score >= 3:
+            print("🚨 This URL is likely a phishing attempt!")
+        elif score == 2:
+            print("⚠️ This URL may be suspicious.")
+        else:
+            print("✅ This URL appears to be safe.")
+        
+        print(f"\n[Risk Score: {score}/5]")
+        print("\n[Reasons]")
+        if reasons:
+            for r in reasons:
+                print(f"- {r}")
+        else:
+            print("- No suspicious patterns detected.")
+            
+        print("\n" + "="*50)

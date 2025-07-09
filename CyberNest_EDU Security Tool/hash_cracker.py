@@ -1,10 +1,13 @@
 import hashlib
 import os
-wordlist_path = "wordlist/wordlist.txt"
 
 def crack_hash(hash_value, wordlist_path, algorithm='md5'):
+    # Get the current directory of the script
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    full_wordlist_path = os.path.join(current_dir, wordlist_path)
+    
     try:
-        with open(wordlist_path, 'r', encoding='utf-8') as file:
+        with open(full_wordlist_path, 'r', encoding='utf-8') as file:
             for word in file:
                 word = word.strip()
                 if algorithm == 'md5':
@@ -16,13 +19,13 @@ def crack_hash(hash_value, wordlist_path, algorithm='md5'):
                 elif algorithm == 'sha512':
                     hashed = hashlib.sha512(word.encode()).hexdigest()
                 else:
-                    return False, "Desteklenmeyen algoritma"
+                    return False, "Unsupported algorithm"
 
                 if hashed == hash_value:
                     return True, word
         return False, None
     except FileNotFoundError:
-        return False, "Wordlist dosyası bulunamadı!"
+        return False, f"Wordlist file not found at: {full_wordlist_path}"
 
 
 def detect_algorithm_by_length(hash_value):
@@ -40,6 +43,8 @@ def detect_algorithm_by_length(hash_value):
 
 
 def run():
+    wordlist_path = "wordlist/wordlist.txt"
+    
     print("""
 ==== Hash Cracker Menu ====
 1. Select Algorithm Manually
@@ -77,14 +82,19 @@ def run():
         if not algorithm:
             print("Algorithm could not be detected. Please select manually.")
             return
-        print(f"Algorithm deteted: {algorithm.upper()}")
+        print(f"Algorithm detected: {algorithm.upper()}")
 
     else:
         print("Invalid Selection!")
         return
 
     found, result = crack_hash(hash_value, wordlist_path, algorithm)
+    print(f"\n{'='*50}")
     if found:
-        print(f"Hash match found! Plaintext: {result}")
+        print(f"✅ Hash cracked successfully!")
+        print(f"🔓 Plaintext: {result}")
+        print(f"🔍 Algorithm: {algorithm.upper()}")
     else:
-        print(f"Hash could not be cracked. {result if result else ''}")
+        print(f"❌ Hash could not be cracked.")
+        print(f"ℹ️  {result if result else 'Try using a different wordlist or algorithm.'}")
+    print(f"{'='*50}\n")
