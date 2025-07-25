@@ -60,8 +60,10 @@ def extract_features(password):
     return features
 
 
-MODEL_PATH = "models/model.joblib"
-ENCODER_PATH = "models/encoder.joblib"
+# Script dosyasının bulunduğu dizini al
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(SCRIPT_DIR, "models", "model.joblib")
+ENCODER_PATH = os.path.join(SCRIPT_DIR, "models", "encoder.joblib")
 def train_or_load_model():
   if os.path.exists(MODEL_PATH) and os.path.exists(ENCODER_PATH):
         model = load(MODEL_PATH)
@@ -91,11 +93,11 @@ def train_or_load_model():
 
         model = RandomForestClassifier()
         model.fit(X_train, y_train)
-        os.makedirs("models", exist_ok=True)
+        os.makedirs(os.path.join(SCRIPT_DIR, "models"), exist_ok=True)
 
         # create model
-        dump(model, "model.joblib")
-        dump(label_encoder, "encoder.joblib")
+        dump(model, MODEL_PATH)
+        dump(label_encoder, ENCODER_PATH)
         return model, label_encoder
 
 def run():  

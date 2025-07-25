@@ -29,7 +29,8 @@ def main():
         print(f"{BLUE}3.{RESET} {MAGENTA}Hash Cracker{RESET}")
         print(f"{BLUE}4.{RESET} {GREEN}Password Security Testing Tools{RESET}")
         print(f"{BLUE}5.{RESET} {YELLOW}Social Engineering-Based Custom Wordlist Generator{RESET}")
-        print(f"{BLUE}6.{RESET} {WHITE}Help{RESET}")
+        print(f"{BLUE}6.{RESET} {CYAN}Web Directory Scanner{RESET}")
+        print(f"{BLUE}7.{RESET} {WHITE}Help{RESET}")
         print(f"{BLUE}0.{RESET} {RED}Exit{RESET}")
 
         choice = input(f"{BOLD}{WHITE}Enter your choice: {RESET}")
@@ -81,6 +82,15 @@ def main():
                 input(f"{BOLD}{CYAN}Press Enter to continue...{RESET}")  
 
         elif choice == '6':
+            print(f"\n {CYAN}======== Web Directory Scanner ========{RESET}")
+            try:
+                from web_directory_scanner import run
+                run()  
+            except Exception as e:
+                print(f"{RED}❌ Error loading Web Directory Scanner: {e}{RESET}")
+                input(f"{BOLD}{CYAN}Press Enter to continue...{RESET}")
+
+        elif choice == '7':
             print(f"\n {WHITE}======== Help & Information ========{RESET}")
             print(f"""{BOLD}
 {YELLOW}1. Port (TCP) Scanner:{RESET} {WHITE}Scans the specified IP address and port range for open ports.{RESET}
@@ -99,9 +109,13 @@ def main():
    {BLUE}• Features:{RESET} {WHITE}Strength evaluation, brute-force simulation, ML analysis{RESET}
    {BLUE}• Use case:{RESET} {WHITE}Password policy testing, security awareness{RESET}
 
-{YELLOW}5. Custom Wordlist Generator:{RESET} {WHITE}Creates personalized wordlists for security testing.{RESET}
-   {BLUE}• Features:{RESET} {WHITE}Social engineering wordlists, personal info combinations{RESET}
-   {BLUE}• Use case:{RESET} {WHITE}Targeted password attacks, social engineering{RESET}
+{YELLOW}5. Social Engineering-Based Custom Wordlist Generator:{RESET} {WHITE}Creates personalized wordlists for security testing.{RESET}
+   {BLUE}• Features:{RESET} {WHITE}Social engineering wordlists, personal info combinations, mutation algorithms{RESET}
+   {BLUE}• Use case:{RESET} {WHITE}Targeted password attacks, social engineering assessments, penetration testing{RESET}
+
+{CYAN}6. Web Directory Scanner:{RESET} {WHITE}Scans for hidden directories, admin panels, and sensitive files.{RESET}
+   {BLUE}• Features:{RESET} {WHITE}robots.txt, admin panels, login pages, config files, backup detection{RESET}
+   {BLUE}• Use case:{RESET} {WHITE}Web reconnaissance, security assessment, penetration testing{RESET}
 
 {MAGENTA}📌 CyberNest v1.1 - Educational Security Tool Suite{RESET}
 {BLUE}⚠️  Warning:{RESET} {WHITE}This tool is for educational and authorized testing purposes only.{RESET}
@@ -114,7 +128,7 @@ def main():
             print(f"{RED}Exiting...{RESET}")
             break
         else:
-            print(f"{RED}❌ Invalid selection! Please choose 0-6.{RESET}")
+            print(f"{RED}❌ Invalid selection! Please choose 0-7.{RESET}")
             input(f"{BOLD}{CYAN}Press Enter to continue...{RESET}")
             continue
 
