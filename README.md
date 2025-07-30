@@ -39,6 +39,8 @@ This tool is developed **strictly for educational and testing purposes**. Please
 | **3. Hash Cracker**                                   | Attempts to crack a given hash (MD5, SHA1, SHA256, SHA512) using a limited wordlist.                |
 | **4. Password Security Testing Tools** | Combines heuristic analysis, a machine learning model for password strength prediction, a brute-force tester for numeric PINs, and a recommendation engine that suggests improvements to weak passwords. |
 | **5. Social Engineering-Based Custom Wordlist Generator** | Generates a personalized wordlist using inputs like name, birth year, job, and location.              |
+| **6. Web Directory Scanner** | Scans websites for hidden directories, admin panels, configuration files, and other sensitive resources. |
+| **7. ARP Network Scanner** | Discovers active devices on the local network by scanning IP ranges and analyzing ARP tables. Shows IP addresses, MAC addresses, hostnames, and device vendors. |
 
 .................................................................................................................................................................................................................................
 
@@ -78,6 +80,8 @@ CyberNest_EDU-Security-Tool/
 ├── phishing_checker.py             # Module to check if a URL is a potential phishing site
 ├── port_scanner.py                 # Basic TCP port scanner for given host and port range
 ├── password_generator.py           # Generates custom password wordlist using user info (for social engineering)
+├── web_directory_scanner.py        # Scans websites for hidden directories and sensitive files
+├── arp_scanner.py                  # Network device discovery tool using ARP and ping scanning
 ├── main.py                         # Command-line interface (CLI) to access all tools
 ├── requirements.txt                # Python dependencies required to run the project
 └── README.md                       # Project description and installation instructions

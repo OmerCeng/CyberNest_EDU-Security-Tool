@@ -30,7 +30,8 @@ def main():
         print(f"{BLUE}4.{RESET} {GREEN}Password Security Testing Tools{RESET}")
         print(f"{BLUE}5.{RESET} {YELLOW}Social Engineering-Based Custom Wordlist Generator{RESET}")
         print(f"{BLUE}6.{RESET} {CYAN}Web Directory Scanner{RESET}")
-        print(f"{BLUE}7.{RESET} {WHITE}Help{RESET}")
+        print(f"{BLUE}7.{RESET} {MAGENTA}ARP Network Scanner{RESET}")
+        print(f"{BLUE}8.{RESET} {WHITE}Help{RESET}")
         print(f"{BLUE}0.{RESET} {RED}Exit{RESET}")
 
         choice = input(f"{BOLD}{WHITE}Enter your choice: {RESET}")
@@ -91,6 +92,15 @@ def main():
                 input(f"{BOLD}{CYAN}Press Enter to continue...{RESET}")
 
         elif choice == '7':
+            print(f"\n {MAGENTA}======== ARP Network Scanner ========{RESET}")
+            try:
+                from arp_scanner import run
+                run()  
+            except Exception as e:
+                print(f"{RED}❌ Error loading ARP Scanner: {e}{RESET}")
+                input(f"{BOLD}{CYAN}Press Enter to continue...{RESET}")
+
+        elif choice == '8':
             print(f"\n {WHITE}======== Help & Information ========{RESET}")
             print(f"""{BOLD}
 {YELLOW}1. Port (TCP) Scanner:{RESET} {WHITE}Scans the specified IP address and port range for open ports.{RESET}
@@ -117,6 +127,10 @@ def main():
    {BLUE}• Features:{RESET} {WHITE}robots.txt, admin panels, login pages, config files, backup detection{RESET}
    {BLUE}• Use case:{RESET} {WHITE}Web reconnaissance, security assessment, penetration testing{RESET}
 
+{MAGENTA}7. ARP Network Scanner:{RESET} {WHITE}Discovers devices on the local network with IP and MAC addresses.{RESET}
+   {BLUE}• Features:{RESET} {WHITE}Network device discovery, MAC address vendor identification, hostname resolution{RESET}
+   {BLUE}• Use case:{RESET} {WHITE}Network reconnaissance, device inventory, security assessment{RESET}
+
 {MAGENTA}📌 CyberNest v1.1 - Educational Security Tool Suite{RESET}
 {BLUE}⚠️  Warning:{RESET} {WHITE}This tool is for educational and authorized testing purposes only.{RESET}
 {RED}0. Exit:{RESET} {WHITE}Exits the program.{RESET}
@@ -128,7 +142,7 @@ def main():
             print(f"{RED}Exiting...{RESET}")
             break
         else:
-            print(f"{RED}❌ Invalid selection! Please choose 0-7.{RESET}")
+            print(f"{RED}❌ Invalid selection! Please choose 0-8.{RESET}")
             input(f"{BOLD}{CYAN}Press Enter to continue...{RESET}")
             continue
 
