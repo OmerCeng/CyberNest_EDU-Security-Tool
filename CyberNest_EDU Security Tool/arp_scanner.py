@@ -1,20 +1,12 @@
 """
-ARP Network Scanner - Educational Cybersecurity Tool
+ARP Network Scanner - Network Discovery Tool
 
-This tool is designed for educational and authorized testing purposes only.
-It performs network device discovery using standard protocols:
+This tool performs network device discovery using standard protocols:
 - ARP (Address Resolution Protocol) table analysis
 - ICMP ping scanning for device discovery
 - Hostname resolution and MAC address vendor identification
 
-DISCLAIMER:
-- Use only on networks you own or have explicit permission to test
-- Intended for network administrators, security professionals, and students
-- Not for unauthorized network reconnaissance or malicious activities
-- Users must comply with applicable laws and regulations
-
 Author: CyberNest_EDU Security Tool Suite
-License: Educational Use Only
 """
 
 import subprocess
@@ -24,22 +16,6 @@ import platform
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
-
-def show_disclaimer():
-    """Show educational disclaimer"""
-    print("""
-    ⚠️  EDUCATIONAL USE ONLY ⚠️
-    
-    ARP Network Scanner is designed for:
-    • Network administrators
-    • Security professionals  
-    • Educational purposes
-    • Authorized testing only
-    
-    This tool uses standard network protocols and does not
-    perform any malicious activities. Users must comply
-    with local laws and have proper authorization.
-    """)
 
 def get_local_ip():
     """Get local IP address"""
@@ -579,9 +555,6 @@ def quick_arp_scan():
 
 def run():
     """Main function"""
-    # Show disclaimer on first run
-    show_disclaimer()
-    
     while True:
         print("""
     ==== ARP Network Scanner ====

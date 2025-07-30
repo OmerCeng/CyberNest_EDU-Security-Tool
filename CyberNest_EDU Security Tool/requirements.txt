@@ -1,15 +1,27 @@
-# Third-party libraries
+# CyberNest v1.2 Security Tool Suite - Required Dependencies
+
+# Core Machine Learning Libraries (for Password Checker)
 scikit-learn>=1.4.0,<1.6.0
 pandas>=2.2.0,<2.4.0
 joblib>=1.3.0,<1.5.0
-colorama>=0.4.6,<0.5.0
+
+# Network and Web Libraries  
 requests>=2.31.0,<2.32.0
 
-# Built-in modules (not needed in requirements.txt, but listed for clarity)
-# socket
-# itertools
-# urllib.parse  # Part of urllib, included in Python stdlib
-# os
-# re
-# hashlib
-# random
+# Terminal Enhancement
+colorama>=0.4.6,<0.5.0
+
+# System and Network Tools (built-in Python modules - listed for reference)
+# subprocess      # System command execution (ARP Scanner, Port Scanner)  
+# socket          # Network connections (Port Scanner, ARP Scanner)
+# threading       # Multi-threading (Web Directory Scanner, ARP Scanner)
+# concurrent.futures  # Thread pool management (ARP Scanner)
+# platform        # OS detection (ARP Scanner)
+# time            # Timing functions (all scanners)
+# re              # Regular expressions (ARP Scanner, Phishing Checker)
+# hashlib         # Hash functions (Hash Cracker)
+# os              # Operating system interface (all tools)
+# urllib.parse    # URL parsing (Web Directory Scanner, Phishing Checker)
+# itertools       # Iterator tools (Password tools)
+# datetime        # Date/time handling (Port Scanner)
+# random          # Random number generation (Password tools)

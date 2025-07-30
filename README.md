@@ -1,17 +1,15 @@
 
-# 🔐 CyberNest_EDU-Security-Tool v1.1
+# 🔐 CyberNest_EDU-Security-Tool v1.2
 
 A lightweight and modular cybersecurity toolkit designed for hands-on practice in controlled educational environments.  
 This suite helps students and enthusiasts explore real-world security concepts through safe and legal simulations.
 
-**Latest Updates in v1.1:**
-- ✅ Improved error handling and user feedback
-- ✅ Enhanced phishing checker with better URL validation
-- ✅ Enhanced menu navigation with try-catch blocks
-- ✅ Better user experience with input validation
-- ✅ Improved port scanner with range validation
-- ✅ Enhanced hash cracker output formatting
-- ✅ Bug fixes and code optimization
+**Latest Updates in v1.2:**
+- ✅ Added ARP Network Scanner for local device discovery
+- ✅ Added Web Directory Scanner for hidden file detection
+- ✅ Enhanced main menu with new security tools
+- ✅ Improved error handling across all modules
+- ✅ Updated documentation and project structure
 
 "CyberNest Security-Tool is being developed for cybersecurity professionals. This version is the first phase and is a limited version for educational purposes."
 

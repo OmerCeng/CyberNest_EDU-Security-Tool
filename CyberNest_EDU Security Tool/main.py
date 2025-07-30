@@ -20,10 +20,10 @@ def main():
    ██║     ╚██████╔╝██║  ██║███████╗██║  ██║██║ ╚████║███████╗███████║
    ╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝{CYAN}
 {'*' * 80}
-{MAGENTA}{BOLD}{'CyberNest v1.1'.center(78)}{RESET}
+{MAGENTA}{BOLD}{'CyberNest v1.2'.center(78)}{RESET}
 {CYAN}{'*' * 80}{RESET}
 """)
-        print(f"{BOLD}{GREEN}=========== CyberNest_EDU Security Tool ============{RESET}")
+        print(f"{BOLD}{GREEN}=========== CyberNest Security Tool ============{RESET}")
         print(f"{BLUE}1.{RESET} {YELLOW}Port (TCP) Scanner{RESET}")
         print(f"{BLUE}2.{RESET} {CYAN}Phishing Checker{RESET}")
         print(f"{BLUE}3.{RESET} {MAGENTA}Hash Cracker{RESET}")
@@ -131,8 +131,7 @@ def main():
    {BLUE}• Features:{RESET} {WHITE}Network device discovery, MAC address vendor identification, hostname resolution{RESET}
    {BLUE}• Use case:{RESET} {WHITE}Network reconnaissance, device inventory, security assessment{RESET}
 
-{MAGENTA}📌 CyberNest v1.1 - Educational Security Tool Suite{RESET}
-{BLUE}⚠️  Warning:{RESET} {WHITE}This tool is for educational and authorized testing purposes only.{RESET}
+{MAGENTA}📌 CyberNest v1.2 - Security Tool Suite{RESET}
 {RED}0. Exit:{RESET} {WHITE}Exits the program.{RESET}
 """)
             input(f"\n{BOLD}{CYAN}Press Enter to return to the menu...{RESET}")
