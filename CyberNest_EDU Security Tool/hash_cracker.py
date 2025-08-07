@@ -43,14 +43,16 @@ def detect_algorithm_by_length(hash_value):
 
 
 def run():
-    wordlist_path = "wordlist/wordlist.txt"
-    
     print("""
 ==== Hash Cracker Menu ====
 1. Select Algorithm Manually
 2. Automatically Detect Algorithm Based on Hash
+3. Select Wordlist
 0. Return to Menu
 """)
+    
+    # Default wordlist
+    wordlist_path = "wordlist/wordlist.txt"
     mode = input("Enter a choice: ")
 
     if mode == '0':
