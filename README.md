@@ -244,13 +244,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Open Source Projects** that inspire and enable this work
 - **Security Researchers** for vulnerability discovery techniques
 
----
 
-**CyberNest v1.3** - *Empowering the next generation of cybersecurity professionals* 🚀
-├── arp_scanner.py                  # Network device discovery tool using ARP and ping scanning
-├── main.py                         # Command-line interface (CLI) to access all tools
-├── requirements.txt                # Python dependencies required to run the project
-└── README.md                       # Project description and installation instructions
-```
 
 
