@@ -39,7 +39,7 @@ This tool is developed **strictly for educational and testing purposes**. Please
 
 | Tool Name                                             | Description                                                                                         |
 |-------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| **1. Port (TCP) Scanner**                             | Scans the specified IP address to detect open TCP ports. Useful for basic network reconnaissance and service enumeration.  |
+| **1. Port Scanner**                                   | Scans the specified IP address to detect open TCP ports. Useful for basic network reconnaissance and service enumeration.  |
 | **2. Phishing Checker**                               | Analyzes a given URL and checks whether it could be a phishing site using advanced pattern recognition and suspicious keyword detection.         |
 | **3. Hash Cracker**                                   | Attempts to crack given hashes (MD5, SHA1, SHA256, SHA512) using wordlists. Supports auto-algorithm detection and verbose debugging.                |
 | **4. Password Security Testing Tools** | Comprehensive password analysis suite combining heuristic analysis, machine learning model for strength prediction, brute-force testing for numeric PINs, and intelligent recommendation engine. |
