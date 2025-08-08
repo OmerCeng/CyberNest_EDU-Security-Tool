@@ -24,7 +24,7 @@ def main():
 {CYAN}{'*' * 80}{RESET}
 """)
         print(f"{BOLD}{GREEN}=========== CyberNest Security Tool ============{RESET}")
-        print(f"{BLUE}1.{RESET} {YELLOW}Port (TCP) Scanner{RESET}")
+        print(f"{BLUE}1.{RESET} {YELLOW}Port Scanner{RESET}")
         print(f"{BLUE}2.{RESET} {CYAN}Phishing Checker{RESET}")
         print(f"{BLUE}3.{RESET} {MAGENTA}Hash Cracker{RESET}")
         print(f"{BLUE}4.{RESET} {GREEN}Password Security Testing Tools{RESET}")
