@@ -1,16 +1,23 @@
 
-# 🔐 CyberNest_EDU-Security-Tool v1.3
+# 🔐 CyberNest_EDU-Security-Tool v1.4
 
-A comprehensive and modular cybersecurity toolkit designed for hands-on practice in controlled educational environments.  
-This advanced suite helps students, researchers, and cybersecurity enthusiasts explore real-world security concepts through safe and legal simulations.
+A comprehensive and modular cybersecurity toolkit designed for professional penetration testing and security research.  
+This advanced suite provides industry-standard security testing capabilities for cybersecurity professionals, penetration testers, and security researchers.
 
-**Latest Updates in v1.3:**
+**Latest Updates in v1.4:**
+- 🆕 **XSS Vulnerability Scanner** - Professional Cross-Site Scripting detection with advanced payload library
+- ✅ Advanced XSS testing capabilities: Reflected, Stored, DOM-based XSS detection
+- ✅ 50+ XSS payload library with WAF bypass techniques
+- ✅ Professional reporting with OWASP compliance mapping
+- ✅ Enhanced web security testing suite (SQL Injection + XSS)
+- ✅ Enterprise-grade vulnerability assessment capabilities
+
+**Previous Updates in v1.3:**
 - 🆕 **SQL Injection Tester** - Advanced web application vulnerability scanner
 - ✅ Enhanced Hash Cracker with verbose debugging and better wordlist support
 - ✅ Improved Password Security Testing with CTF/Pentest modes
 - ✅ Updated main interface with professional color coding
 - ✅ Comprehensive error handling and user experience improvements
-- ✅ Extended documentation with detailed usage examples
 
 **Previous Updates in v1.2:**
 - ✅ Added ARP Network Scanner for local device discovery
@@ -18,7 +25,7 @@ This advanced suite helps students, researchers, and cybersecurity enthusiasts e
 - ✅ Enhanced main menu with new security tools
 - ✅ Improved error handling across all modules
 
-"CyberNest Security-Tool is being developed for cybersecurity professionals. This version is the first phase and is a limited version for educational purposes."
+"CyberNest Security-Tool is being developed for professional cybersecurity experts and penetration testers. This version provides enterprise-grade security testing capabilities for authorized security assessments."
 
 ### ⚠️ Important Notes
 
@@ -46,7 +53,8 @@ This tool is developed **strictly for educational and testing purposes**. Please
 | **5. Social Engineering-Based Custom Wordlist Generator** | Generates personalized wordlists using social engineering techniques with inputs like personal information, mutations, and common patterns.              |
 | **6. Web Directory Scanner** | Scans websites for hidden directories, admin panels, configuration files, backup files, and other sensitive resources using comprehensive wordlists. |
 | **7. ARP Network Scanner** | Discovers active devices on the local network by scanning IP ranges and analyzing ARP tables. Shows IP addresses, MAC addresses, hostnames, and device vendors with detailed network mapping. |
-| **8. SQL Injection Tester** | **🆕 NEW!** Advanced web application security scanner that tests for SQL injection vulnerabilities using Error-based, Union-based, Boolean-based, and Time-based injection techniques. Includes automatic form discovery and batch testing capabilities. |
+| **8. SQL Injection Tester** | Advanced web application security scanner that tests for SQL injection vulnerabilities using Error-based, Union-based, Boolean-based, and Time-based injection techniques. Includes automatic form discovery and batch testing capabilities. |
+| **9. XSS Vulnerability Scanner** | **🆕 NEW!** Professional Cross-Site Scripting detection tool that tests for Reflected, Stored, and DOM-based XSS vulnerabilities. Features 50+ advanced payload library with WAF bypass techniques, professional reporting with OWASP compliance mapping, and comprehensive web security assessment capabilities. |
 
 .................................................................................................................................................................................................................................
 
@@ -79,7 +87,7 @@ python3 main.py
 cd "CyberNest_EDU Security Tool"
 python3 main.py
 
-# Choose from 8 powerful security tools:
+# Choose from 9 powerful security tools:
 # 1. Port Scanner     - Network reconnaissance
 # 2. Phishing Checker - URL safety analysis  
 # 3. Hash Cracker     - Password hash analysis
@@ -88,6 +96,7 @@ python3 main.py
 # 6. Directory Scan   - Web reconnaissance
 # 7. ARP Scanner      - Network discovery
 # 8. SQL Injection    - Web vulnerability testing
+# 9. XSS Scanner      - Cross-Site Scripting detection
 ```
 
 ..................................................................................................................................................................................................................................
@@ -112,7 +121,8 @@ CyberNest_EDU-Security-Tool/
 │   ├── password_generator.py       # Social engineering wordlist generator
 │   ├── web_directory_scanner.py    # Web directory and file discovery scanner
 │   ├── arp_scanner.py              # ARP-based network device discovery
-│   ├── sql_injection_tester.py     # 🆕 Advanced SQL injection vulnerability scanner
+│   ├── sql_injection_tester.py     # Advanced SQL injection vulnerability scanner
+│   ├── xss_vulnerability_scanner.py # 🆕 Professional XSS vulnerability detection tool
 │   └── requirements.txt            # Python dependencies
 │
 ├── README.md                       # Project documentation
@@ -121,11 +131,35 @@ CyberNest_EDU-Security-Tool/
 
 ..................................................................................................................................................................................................................................
 
-### 🛠️ Advanced Features in v1.3
+### 🛠️ Advanced Features in v1.4
+
+#### 🔥 XSS Vulnerability Scanner Capabilities
+
+The new XSS Vulnerability Scanner provides professional Cross-Site Scripting detection:
+
+**XSS Types Supported:**
+- **Reflected XSS** - Immediate script execution in responses
+- **Stored XSS** - Persistent script storage testing
+- **DOM-based XSS** - Client-side DOM manipulation attacks
+- **Universal XSS** - Cross-domain scripting vulnerabilities
+
+**Advanced Payload Library:**
+```bash
+• 50+ XSS Payloads        - Comprehensive attack vectors
+• WAF Bypass Techniques   - Advanced evasion methods
+• OWASP Compliance       - Industry standard testing
+• Severity Scoring       - Professional vulnerability assessment
+```
+
+**Testing Features:**
+- **Multi-threaded Scanning** - Fast concurrent vulnerability testing
+- **Form Discovery** - Automatic web form detection and testing
+- **Professional Reporting** - Detailed vulnerability reports with CVSS-style scoring
+- **Custom Payload Support** - Advanced payload customization capabilities
 
 #### 🔥 SQL Injection Tester Capabilities
 
-The new SQL Injection Tester provides comprehensive web application security testing:
+The SQL Injection Tester provides comprehensive web application security testing:
 
 **Injection Types Supported:**
 - **Error-based Injection** - Detects SQL errors in responses (MySQL, PostgreSQL, MSSQL, Oracle)
@@ -139,6 +173,18 @@ The new SQL Injection Tester provides comprehensive web application security tes
 1. Manual URL Testing    - Specific parameter testing
 2. Automatic Form Scan   - Discovers and tests web forms
 3. Batch URL Testing     - Multiple URLs from file
+```
+
+**Example Usage:**
+```bash
+# XSS Testing Example
+URL: http://example.com/search.php?q=test
+Payload: <script>alert('XSS')</script>
+Result: Reflected XSS vulnerability detected - High severity
+
+# Advanced WAF Bypass
+Payload: <img src=x onerror=alert(String.fromCharCode(88,83,83))>
+Result: WAF bypass successful - XSS execution confirmed
 ```
 
 **Example Usage:**
@@ -223,12 +269,14 @@ This tool is designed for **educational purposes only**. Users must:
 - `scikit-learn>=1.7.0` - Machine learning capabilities
 - `pandas>=2.2.0` - Data processing
 - `requests>=2.31.0` - HTTP client for web testing
+- `beautifulsoup4>=4.12.0` - HTML parsing for XSS detection
 - `joblib>=1.3.0` - Model serialization
 
 **Performance Metrics:**
 - **Hash Cracking:** 1000+ hashes/second
 - **Port Scanning:** 100+ ports/second  
 - **SQL Injection:** 50+ payloads/minute
+- **XSS Scanning:** 100+ payloads/minute with multi-threading
 - **Network Discovery:** Full /24 subnet in <30 seconds
 
 ..................................................................................................................................................................................................................................

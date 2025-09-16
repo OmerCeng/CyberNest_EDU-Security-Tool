@@ -20,7 +20,7 @@ def main():
    ██║     ╚██████╔╝██║  ██║███████╗██║  ██║██║ ╚████║███████╗███████║
    ╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝{CYAN}
 {'*' * 80}
-{MAGENTA}{BOLD}{'CyberNest v1.3'.center(78)}{RESET}
+{MAGENTA}{BOLD}{'CyberNest v1.4'.center(78)}{RESET}
 {CYAN}{'*' * 80}{RESET}
 """)
         print(f"{BOLD}{GREEN}=========== CyberNest Security Tool ============{RESET}")
@@ -32,7 +32,8 @@ def main():
         print(f"{BLUE}6.{RESET} {CYAN}Web Directory Scanner{RESET}")
         print(f"{BLUE}7.{RESET} {MAGENTA}ARP Network Scanner{RESET}")
         print(f"{BLUE}8.{RESET} {RED}SQL Injection Tester{RESET}")
-        print(f"{BLUE}9.{RESET} {WHITE}Help{RESET}")
+        print(f"{BLUE}9.{RESET} {GREEN}XSS Vulnerability Scanner{RESET}")
+        print(f"{BLUE}10.{RESET} {WHITE}Help{RESET}")
         print(f"{BLUE}0.{RESET} {RED}Exit{RESET}")
 
         choice = input(f"{BOLD}{WHITE}Enter your choice: {RESET}")
@@ -111,9 +112,18 @@ def main():
                 input(f"{BOLD}{CYAN}Press Enter to continue...{RESET}")
 
         elif choice == '9':
+            print(f"\n {GREEN}======== XSS Vulnerability Scanner ========{RESET}")
+            try:
+                from xss_vulnerability_scanner import run
+                run()  
+            except Exception as e:
+                print(f"{RED}❌ Error loading XSS Vulnerability Scanner: {e}{RESET}")
+                input(f"{BOLD}{CYAN}Press Enter to continue...{RESET}")
+
+        elif choice == '10':
             print(f"\n {WHITE}======== Help & Information ========{RESET}")
             print(f"""{BOLD}
-{YELLOW}1. Port (TCP) Scanner:{RESET} {WHITE}Scans the specified IP address and port range for open ports.{RESET}
+{YELLOW}1. Port Scanner:{RESET} {WHITE}Scans the specified IP address and port range for open ports.{RESET}
    {BLUE}• Features:{RESET} {WHITE}TCP port scanning, service detection, customizable port ranges{RESET}
    {BLUE}• Use case:{RESET} {WHITE}Network reconnaissance, service enumeration{RESET}
 
@@ -145,7 +155,11 @@ def main():
    {BLUE}• Features:{RESET} {WHITE}Error-based, Union-based, Boolean-based, Time-based injection testing{RESET}
    {BLUE}• Use case:{RESET} {WHITE}Web application security testing, penetration testing{RESET}
 
-{MAGENTA}📌 CyberNest v1.3 - Security Tool Suite{RESET}
+{GREEN}9. XSS Vulnerability Scanner:{RESET} {WHITE}Detects Cross-Site Scripting vulnerabilities in web applications.{RESET}
+   {BLUE}• Features:{RESET} {WHITE}Reflected, Stored, DOM-based XSS detection, WAF bypass techniques{RESET}
+   {BLUE}• Use case:{RESET} {WHITE}Web application security testing, OWASP Top 10 compliance{RESET}
+
+{MAGENTA}📌 CyberNest v1.4 - Security Tool Suite{RESET}
 {RED}0. Exit:{RESET} {WHITE}Exits the program.{RESET}
 """)
             input(f"\n{BOLD}{CYAN}Press Enter to return to the menu...{RESET}")
@@ -155,7 +169,7 @@ def main():
             print(f"{RED}Exiting...{RESET}")
             break
         else:
-            print(f"{RED}❌ Invalid selection! Please choose 0-9.{RESET}")
+            print(f"{RED}❌ Invalid selection! Please choose 0-10.{RESET}")
             input(f"{BOLD}{CYAN}Press Enter to continue...{RESET}")
             continue
 
