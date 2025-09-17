@@ -43,3 +43,68 @@ def run():
 
     wordlist = generate_combinations(user_words)
     save_to_file(wordlist)
+
+def run_cli(name=None, surname=None, birthdate=None, pet=None, team=None, hometown=None, profession=None):
+    """CLI version for command line usage"""
+    try:
+        print(f"[+] Generating custom wordlist...")
+        
+        # Collect provided information
+        user_words = []
+        if name:
+            user_words.append(name)
+            print(f"[+] Name: {name}")
+        if surname:
+            user_words.append(surname)
+            print(f"[+] Surname: {surname}")
+        if birthdate:
+            user_words.append(birthdate)
+            print(f"[+] Birth year: {birthdate}")
+        if pet:
+            user_words.append(pet)
+            print(f"[+] Pet name: {pet}")
+        if team:
+            user_words.append(team)
+            print(f"[+] Favorite team: {team}")
+        if hometown:
+            user_words.append(hometown)
+            print(f"[+] Hometown: {hometown}")
+        if profession:
+            user_words.append(profession)
+            print(f"[+] Profession: {profession}")
+        
+        if not user_words:
+            print(f"[-] No information provided. Need at least one parameter.")
+            print(f"[+] Usage: cybernest wordlist -n John -s Doe -b 1990")
+            import sys
+            sys.exit(1)
+        
+        print(f"[+] Base words: {len(user_words)}")
+        print("-" * 50)
+        
+        # Generate combinations
+        wordlist = generate_combinations(user_words)
+        
+        # Save to file
+        filepath = "wordlist/custom_wordlist.txt"
+        save_to_file(wordlist, filepath)
+        
+        print(f"[+] Generated {len(wordlist)} password combinations")
+        print(f"[+] Wordlist saved to: {filepath}")
+        
+        # Show some examples
+        sample_words = list(sorted(wordlist))[:10]
+        print(f"[+] Sample passwords:")
+        for word in sample_words:
+            print(f"  • {word}")
+        
+        if len(wordlist) > 10:
+            print(f"  ... and {len(wordlist) - 10} more")
+            
+    except Exception as e:
+        print(f"[-] Error: {e}")
+        import sys
+        sys.exit(1)
+
+if __name__ == "__main__":
+    run()

@@ -595,5 +595,66 @@ def run():
             print("❌ Invalid selection! Please choose between 0-3.")
             input("\n📱 Press Enter to continue...")
 
+def run_cli(network_range):
+    """CLI version for command line usage"""
+    try:
+        print(f"[+] Network range: {network_range}")
+        print(f"[+] Scan started at: {time.strftime('%Y-%m-%d %H:%M:%S')}")
+        print("-" * 50)
+        
+        # Parse network range
+        if '/' in network_range:
+            # CIDR notation like 192.168.1.0/24
+            base_ip = network_range.split('/')[0]
+            network = '.'.join(base_ip.split('.')[:-1])
+        else:
+            # Assume it's a base network like 192.168.1.0
+            network = '.'.join(network_range.split('.')[:-1])
+        
+        print(f"[+] Scanning network: {network}.0/24")
+        print(f"[+] IP range: {network}.1 - {network}.254")
+        
+        # Perform ping scan
+        alive_hosts = []
+        with ThreadPoolExecutor(max_workers=50) as executor:
+            future_to_ip = {executor.submit(ping_host, f"{network}.{i}"): i 
+                          for i in range(1, 255)}
+            
+            for future in as_completed(future_to_ip):
+                result = future.result()
+                if result:
+                    alive_hosts.append(result)
+        
+        if alive_hosts:
+            print(f"\n[+] Found {len(alive_hosts)} active host(s):")
+            
+            # Get ARP table for MAC addresses
+            arp_table = get_arp_table()
+            
+            for host in sorted(alive_hosts, key=lambda x: int(x.split('.')[-1])):
+                try:
+                    hostname = socket.gethostbyaddr(host)[0]
+                except:
+                    hostname = "Unknown"
+                
+                mac = "Unknown"
+                vendor = "Unknown"
+                
+                # Look for MAC in ARP table
+                for arp_entry in arp_table:
+                    if arp_entry['ip'] == host:
+                        mac = arp_entry['mac']
+                        vendor = get_vendor_info(mac)
+                        break
+                
+                print(f"  {host:<15} {mac:<18} {hostname:<20} {vendor}")
+        else:
+            print(f"\n[-] No active hosts found in range {network}.0/24")
+            
+    except Exception as e:
+        print(f"[-] Error: {e}")
+        import sys
+        sys.exit(1)
+
 if __name__ == "__main__":
     run()

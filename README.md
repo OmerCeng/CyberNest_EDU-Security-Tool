@@ -5,7 +5,10 @@ A comprehensive and modular cybersecurity toolkit designed for professional pene
 This advanced suite provides industry-standard security testing capabilities for cybersecurity professionals, penetration testers, and security researchers.
 
 **Latest Updates in v1.4:**
+- 🆕 **Professional CLI Interface** - Command-line tools for advanced penetration testing workflows
+- 🆕 **Hybrid Operation Modes** - Both interactive menu and CLI support for maximum flexibility
 - 🆕 **XSS Vulnerability Scanner** - Professional Cross-Site Scripting detection with advanced payload library
+- ✅ **cybernest** command-line tool with nmap-style professional interface
 - ✅ Advanced XSS testing capabilities: Reflected, Stored, DOM-based XSS detection
 - ✅ 50+ XSS payload library with WAF bypass techniques
 - ✅ Professional reporting with OWASP compliance mapping
@@ -88,16 +91,256 @@ cd "CyberNest_EDU Security Tool"
 python3 main.py
 
 # Choose from 9 powerful security tools:
-# 1. Port Scanner     - Network reconnaissance
-# 2. Phishing Checker - URL safety analysis  
-# 3. Hash Cracker     - Password hash analysis
-# 4. Password Tester  - Security evaluation
-# 5. Wordlist Gen     - Social engineering
-# 6. Directory Scan   - Web reconnaissance
-# 7. ARP Scanner      - Network discovery
-# 8. SQL Injection    - Web vulnerability testing
-# 9. XSS Scanner      - Cross-Site Scripting detection
+# 1. Port Scanner                                   - Network reconnaissance
+# 2. Phishing Checker                               - URL safety analysis  
+# 3. Hash Cracker                                   - Password hash analysis
+# 4. Password Security Testing Tools                - Security evaluation
+# 5. Social Engineering-Based Custom Wordlist Generator - Social engineering
+# 6. Web Directory Scanner                          - Web reconnaissance
+# 7. ARP Network Scanner                            - Network discovery
+# 8. SQL Injection Tester                          - Web vulnerability testing
+# 9. XSS Vulnerability Scanner                     - Cross-Site Scripting detection
 ```
+
+.................................................................................................................................................................................................................................
+
+## 💻 Professional CLI Interface (NEW in v1.4)
+
+CyberNest now supports both **interactive menu mode** and **professional command-line interface** for advanced penetration testing workflows.
+
+### 🔧 CLI Setup
+
+```bash
+# Navigate to the tool directory
+cd "CyberNest_EDU Security Tool"
+
+# Make the script executable
+chmod +x main.py
+
+# Create cybernest command (recommended)
+ln -s "$(pwd)/main.py" /usr/local/bin/cybernest
+
+# Now you can use cybernest from anywhere
+cybernest --help
+```
+
+### 📖 CLI Usage Guide
+
+#### **Interactive Menu Mode**
+```bash
+# Launch full interactive menu system
+cybernest -menu
+cybernest --menu
+
+# Traditional Python execution
+python3 main.py
+```
+
+#### **Command Line Tools**
+
+**🔍 Port Scanner**
+```bash
+# Basic port scan
+cybernest portscan 192.168.1.1
+
+# Scan specific port range
+cybernest portscan 192.168.1.1 -p 1-1000
+
+# Scan specific ports with custom threads
+cybernest portscan 192.168.1.1 -p 22,80,443,8080 -t 50
+
+# Scan single port
+cybernest portscan 192.168.1.1 -p 22
+```
+
+**🛡️ XSS Vulnerability Scanner**
+```bash
+# Basic XSS scan
+cybernest xss http://example.com/search.php
+
+# Test with custom payload count
+cybernest xss http://example.com/page.php --payloads 25
+
+# Test all forms on page
+cybernest xss http://example.com/login.php --forms
+
+# Advanced testing
+cybernest xss https://target.com/page?q=test --payloads 50
+```
+
+**🔓 Hash Cracker**
+```bash
+# Auto-detect algorithm
+cybernest hashcrack d41d8cd98f00b204e9800998ecf8427e
+
+# Specify algorithm
+cybernest hashcrack 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8 -a sha256
+
+# Custom wordlist
+cybernest hashcrack aec070645fe53ee3b3763059376134f058cc337247c978add178b6ccdfb0019f -w custom.txt
+
+# All supported algorithms: md5, sha1, sha256, sha512, auto
+```
+
+**💉 SQL Injection Tester**
+```bash
+# Test specific URL
+cybernest sqli http://example.com/login.php
+
+# Test specific parameter
+cybernest sqli http://shop.com/product.php?id=1 --param id
+
+# Test all forms on page
+cybernest sqli https://site.com/search.php --forms
+
+# Advanced testing
+cybernest sqli http://vulnerable-site.com/page.php?user=admin
+```
+
+**🎣 Phishing URL Checker**
+```bash
+# Check suspicious URL
+cybernest phishing http://suspicious-site.com
+
+# Verify bank website
+cybernest phishing https://fake-bank.org
+
+# Batch check multiple URLs
+cybernest phishing http://phishing-test.com
+```
+
+**📝 Custom Wordlist Generator**
+```bash
+# Basic personal wordlist
+cybernest wordlist -n John -s Doe
+
+# Advanced social engineering wordlist
+cybernest wordlist -n Alice -s Smith -b 1990 --hometown "New York"
+
+# Complete profile wordlist
+cybernest wordlist -n John -s Doe -b 1985 -p Fluffy -t Arsenal --profession Engineer
+
+# All available options:
+# -n/--name, -s/--surname, -b/--birthdate, -p/--pet, -t/--team, --hometown, --profession
+```
+
+**🔐 Password Security Analyzer**
+```bash
+# Basic password analysis
+cybernest password mypassword123
+
+# Advanced analysis with ML
+cybernest password "P@ssw0rd!" -m ml
+
+# Security analysis mode
+cybernest password complex_pass123 -m analyze
+
+# Brute force simulation (4-digit numeric PINs only)
+cybernest password 1234 -m brute
+```
+```bash
+# Basic password analysis
+cybernest password mypassword123
+
+# Advanced analysis with ML
+cybernest password "P@ssw0rd!" -m ml
+
+# Security analysis mode
+cybernest password complex_pass123 -m analyze
+
+# Brute force simulation (4-digit PINs only)
+cybernest password 1234 -m brute
+```
+
+**🌐 Web Directory Scanner**
+```bash
+# Basic directory scan
+cybernest dirscan http://example.com
+
+# Custom threads and wordlist
+cybernest dirscan http://example.com -t 50 -w custom_dirs.txt
+
+# Professional recon
+cybernest dirscan https://target.com -t 20
+
+# Scan for admin panels, config files, backups
+cybernest dirscan http://vulnerable-site.com
+```
+
+**🔍 ARP Network Scanner**
+```bash
+# Scan local network
+cybernest arpscan 192.168.1.0/24
+
+# Scan different subnet
+cybernest arpscan 10.0.0.0/24
+
+# Corporate network discovery
+cybernest arpscan 172.16.1.0/24
+
+# Discover devices with MAC addresses and vendors
+```
+
+### 🎯 Professional Penetration Testing Workflows
+
+**Network Reconnaissance Workflow:**
+```bash
+# 1. Discover network devices
+cybernest arpscan 192.168.1.0/24
+
+# 2. Port scan discovered hosts
+cybernest portscan 192.168.1.100 -p 1-65535 -t 100
+
+# 3. Web application discovery
+cybernest dirscan http://192.168.1.100 -t 30
+```
+
+**Web Application Security Assessment:**
+```bash
+# 1. Directory enumeration
+cybernest dirscan https://target.com
+
+# 2. XSS vulnerability testing
+cybernest xss https://target.com/search.php --forms
+
+# 3. SQL injection testing
+cybernest sqli https://target.com/login.php --forms
+
+# 4. Phishing protection check
+cybernest phishing https://target.com
+```
+
+**Password Security Assessment:**
+```bash
+# 1. Generate target wordlists
+cybernest wordlist -n Target -s User -b 1990 --profession Developer
+
+# 2. Hash cracking with custom wordlist
+cybernest hashcrack <hash> -w wordlist/custom_wordlist.txt
+
+# 3. Password policy testing
+cybernest password target_password -m analyze
+```
+
+### 📋 Help System
+
+```bash
+# General help
+cybernest --help
+cybernest -h
+
+# Tool-specific help
+cybernest portscan --help
+cybernest xss --help
+cybernest hashcrack --help
+
+# Detailed examples and usage
+cybernest --help  # Shows comprehensive examples
+```
+
+.................................................................................................................................................................................................................................
+
+### 🔧 Module Descriptions
 
 ..................................................................................................................................................................................................................................
 ### 🗂️ Project Structure

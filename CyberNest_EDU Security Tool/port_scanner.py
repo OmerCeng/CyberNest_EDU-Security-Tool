@@ -54,6 +54,17 @@ class AdvancedPortScanner:
         finally:
             with self.lock:
                 self.scanned_ports += 1
+    
+    def scan_single_port(self, port):
+        """Scan a single port and return True if open"""
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(self.timeout)
+            result = sock.connect_ex((self.target, port))
+            sock.close()
+            return result == 0
+        except socket.error:
+            return False
                 
     def progress_display(self):
         """Minimal progress display"""
@@ -242,6 +253,62 @@ Professional port scanning with service detection and threading
             print(f"{RED}❌ Error occurred: {e}{RESET}")
             
         input(f"\n{BOLD}{CYAN}Press Enter to continue...{RESET}")
+
+def run_cli(target, port_range="1-1000", threads=100):
+    """CLI version for command line usage"""
+    try:
+        print(f"[+] Target: {target}")
+        print(f"[+] Port Range: {port_range}")
+        print(f"[+] Threads: {threads}")
+        print(f"[+] Scan started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print("-" * 50)
+        
+        # Parse port range
+        if '-' in port_range:
+            start_port, end_port = map(int, port_range.split('-'))
+        elif ',' in port_range:
+            # Handle comma-separated ports like 80,443,8080
+            ports = [int(p.strip()) for p in port_range.split(',')]
+            scanner = AdvancedPortScanner(target, timeout=1, threads=threads)
+            open_ports = []
+            
+            for port in ports:
+                if scanner.scan_single_port(port):
+                    service = COMMON_PORTS.get(port, "Unknown")
+                    open_ports.append((port, service))
+            
+            # Display results
+            if open_ports:
+                print(f"\n{GREEN}[+] Found {len(open_ports)} open port(s):{RESET}")
+                for port, service in sorted(open_ports):
+                    print(f"  {port}/tcp  {GREEN}OPEN{RESET}  {service}")
+            else:
+                print(f"\n{RED}[-] No open ports found{RESET}")
+            return
+        else:
+            start_port = end_port = int(port_range)
+        
+        # Create scanner and run scan
+        scanner = AdvancedPortScanner(target, timeout=1, threads=threads)
+        open_ports = scanner.port_scan(start_port, end_port, scan_type="tcp")
+        
+        # Display results in CLI format
+        if open_ports:
+            print(f"\n{GREEN}[+] Found {len(open_ports)} open port(s):{RESET}")
+            for port, service in sorted(open_ports):
+                print(f"  {port}/tcp  {GREEN}OPEN{RESET}  {service}")
+        else:
+            print(f"\n{RED}[-] No open ports found in range {port_range}{RESET}")
+            
+    except socket.gaierror:
+        print(f"{RED}[-] Error: Could not resolve hostname {target}{RESET}")
+        sys.exit(1)
+    except ValueError:
+        print(f"{RED}[-] Error: Invalid port range format{RESET}")
+        sys.exit(1)
+    except Exception as e:
+        print(f"{RED}[-] Error: {e}{RESET}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     run()

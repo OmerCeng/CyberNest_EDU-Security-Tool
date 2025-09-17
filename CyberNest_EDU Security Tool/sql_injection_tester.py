@@ -442,5 +442,42 @@ def run():
     
     input("\nPress Enter to continue...")
 
+def run_cli(url, test_forms=False, param=None):
+    """CLI version for command line usage"""
+    try:
+        print(f"[+] Target: {url}")
+        print(f"[+] Test forms: {'Yes' if test_forms else 'No'}")
+        if param:
+            print(f"[+] Specific parameter: {param}")
+        print("-" * 50)
+        
+        tester = SQLInjectionTester()
+        
+        if test_forms:
+            print(f"[+] Testing forms on {url}...")
+            results = tester.test_forms(url)
+        elif param:
+            print(f"[+] Testing parameter '{param}' on {url}...")
+            results = tester.test_parameter(url, param)
+        else:
+            print(f"[+] Testing URL parameters on {url}...")
+            results = tester.test_url(url)
+        
+        if results:
+            print(f"[!] SQL injection vulnerabilities found:")
+            for result in results:
+                print(f"  • Type: {result['vulnerability_type']}")
+                print(f"  • Parameter: {result.get('parameter', 'N/A')}")
+                print(f"  • Payload: {result['payload'][:50]}...")
+                print(f"  • Evidence: {result['evidence'][:100]}...")
+                print()
+        else:
+            print(f"[+] No SQL injection vulnerabilities detected")
+            
+    except Exception as e:
+        print(f"[-] Error: {e}")
+        import sys
+        sys.exit(1)
+
 if __name__ == "__main__":
     run()

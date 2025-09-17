@@ -120,3 +120,12 @@ dmypy.json
 *.log
 *.tmp
 *.temp
+
+# CyberNest executable symlink - removed to allow tracking
+# CyberNest_EDU\ Security\ Tool/cybernest
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd

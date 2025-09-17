@@ -100,3 +100,44 @@ def run():
         print(f"❌ Hash could not be cracked.")
         print(f"ℹ️  {result if result else 'Try using a different wordlist or algorithm.'}")
     print(f"{'='*50}\n")
+
+def run_cli(hash_value, wordlist_path="wordlist/wordlist.txt", algorithm="auto"):
+    """CLI version for command line usage"""
+    try:
+        print(f"[+] Hash: {hash_value}")
+        print(f"[+] Wordlist: {wordlist_path}")
+        
+        # Auto-detect algorithm if needed
+        if algorithm == "auto":
+            algorithm = detect_algorithm_by_length(hash_value)
+            if not algorithm:
+                print(f"[-] Error: Could not detect hash algorithm (length: {len(hash_value)})")
+                import sys
+                sys.exit(1)
+            print(f"[+] Algorithm (auto-detected): {algorithm.upper()}")
+        else:
+            print(f"[+] Algorithm: {algorithm.upper()}")
+        
+        print("-" * 50)
+        
+        # Attempt to crack the hash
+        found, result = crack_hash(hash_value, wordlist_path, algorithm)
+        
+        if found:
+            print(f"[+] SUCCESS: Hash cracked!")
+            print(f"[+] Plaintext: {result}")
+            print(f"[+] Algorithm: {algorithm.upper()}")
+        else:
+            print(f"[-] FAILED: Hash could not be cracked")
+            if result:
+                print(f"[-] Error: {result}")
+            else:
+                print(f"[-] Try using a different wordlist or algorithm")
+                
+    except Exception as e:
+        print(f"[-] Error: {e}")
+        import sys
+        sys.exit(1)
+
+if __name__ == "__main__":
+    run()

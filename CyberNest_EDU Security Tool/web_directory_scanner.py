@@ -324,5 +324,50 @@ def run():
         
         input(f"\n{BOLD}{CYAN}Press Enter to continue...{RESET}")
 
+def run_cli(url, wordlist=None, threads=20):
+    """CLI version for command line usage"""
+    try:
+        print(f"[+] Target: {url}")
+        print(f"[+] Threads: {threads}")
+        if wordlist:
+            print(f"[+] Custom wordlist: {wordlist}")
+        else:
+            print(f"[+] Using built-in wordlist ({len(COMMON_PATHS)} paths)")
+        print("-" * 50)
+        
+        # Create scanner
+        scanner = WebDirectoryScanner(url, threads=threads)
+        
+        # Use custom wordlist if provided
+        if wordlist and os.path.exists(wordlist):
+            print(f"[+] Loading custom wordlist from {wordlist}")
+            try:
+                with open(wordlist, 'r', encoding='utf-8') as f:
+                    custom_paths = [line.strip() for line in f if line.strip()]
+                print(f"[+] Loaded {len(custom_paths)} paths from wordlist")
+                # Replace the scanner's paths
+                scanner.paths = custom_paths
+            except Exception as e:
+                print(f"[-] Error loading wordlist: {e}")
+                print(f"[+] Using built-in wordlist instead")
+        
+        # Perform scan
+        print(f"[+] Starting directory scan...")
+        results = scanner.scan()
+        
+        # Display results in CLI format
+        if results:
+            print(f"\n[+] Found {len(results)} accessible paths:")
+            for result in results:
+                status_color = GREEN if result['status'] < 300 else YELLOW if result['status'] < 400 else RED
+                print(f"  {result['url']:<40} [{status_color}{result['status']}{RESET}] {result['size']} bytes")
+        else:
+            print(f"\n[-] No accessible directories or files found")
+            
+    except Exception as e:
+        print(f"[-] Error: {e}")
+        import sys
+        sys.exit(1)
+
 if __name__ == "__main__":
     run()

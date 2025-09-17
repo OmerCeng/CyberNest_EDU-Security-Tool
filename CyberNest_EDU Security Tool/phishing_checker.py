@@ -382,3 +382,53 @@ URL and Email phishing analysis with machine learning patterns
             print(f"{RED}❌ Invalid selection!{RESET}")
             
         input(f"\n{BOLD}{CYAN}Press Enter to continue...{RESET}")
+
+def run_cli(url):
+    """CLI version for command line usage"""
+    try:
+        print(f"[+] Checking URL: {url}")
+        print("-" * 50)
+        
+        # Check if it's a URL or email address
+        if '@' in url and not url.startswith('http'):
+            # Treat as email for quick analysis
+            print(f"[+] Detected email address format")
+            minimal_email = f"From: {url}\nSubject: Quick check\n\nCLI analysis"
+            score, reasons = analyze_email_from_text(minimal_email)
+            
+            print(f"[+] Risk Score: {score}/10")
+            
+            if score >= 3:
+                print(f"[!] SUSPICIOUS - Check carefully!")
+            elif score >= 2:
+                print(f"[!] CAUTION - Some concerns")
+            else:
+                print(f"[+] LOOKS OK - Basic check passed")
+                
+            if reasons:
+                print(f"[+] Concerns found:")
+                for reason in reasons:
+                    print(f"  • {reason}")
+        else:
+            # Treat as URL
+            print(f"[+] Analyzing URL for phishing indicators...")
+            score, reasons = analyze_url(url)
+            
+            print(f"[+] Risk Score: {score}/10")
+            
+            if score >= 4:
+                print(f"[!] HIGH RISK - Likely phishing")
+            elif score >= 2:
+                print(f"[!] MEDIUM RISK - Suspicious indicators")
+            else:
+                print(f"[+] LOW RISK - Appears legitimate")
+                
+            if reasons:
+                print(f"[+] Risk factors found:")
+                for reason in reasons:
+                    print(f"  • {reason}")
+                    
+    except Exception as e:
+        print(f"[-] Error: {e}")
+        import sys
+        sys.exit(1)

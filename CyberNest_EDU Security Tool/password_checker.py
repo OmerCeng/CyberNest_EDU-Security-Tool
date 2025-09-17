@@ -139,3 +139,73 @@ def run():
         return
     else:
         print("Invalid Selection!")
+
+def run_cli(password, mode="analyze"):
+    """CLI version for command line usage"""
+    try:
+        print(f"[+] Password: {'*' * len(password)}")
+        print(f"[+] Mode: {mode}")
+        print("-" * 50)
+        
+        if mode == "analyze" or mode == "strength":
+            # Password strength analysis
+            score, recommendations = password_strength(password)
+            print(f"[+] Password Strength Score: {score}/5")
+            
+            if score >= 4:
+                print(f"[+] STRONG password")
+            elif score >= 3:
+                print(f"[!] MEDIUM password")
+            else:
+                print(f"[-] WEAK password")
+            
+            if recommendations:
+                print(f"[+] Recommendations:")
+                for rec in recommendations:
+                    print(f"  • {rec}")
+                    
+        elif mode == "ml" or mode == "predict":
+            # Machine learning prediction
+            try:
+                # Load model
+                current_dir = os.path.dirname(os.path.abspath(__file__))
+                model = load(os.path.join(current_dir, 'models', 'model.joblib'))
+                label_encoder = load(os.path.join(current_dir, 'models', 'encoder.joblib'))
+                
+                features = [extract_features(password)]
+                prediction = model.predict(features)
+                strength = label_encoder.inverse_transform(prediction)
+                print(f"[+] ML Prediction: {strength[0]}")
+                
+            except Exception as e:
+                print(f"[-] ML Model Error: {e}")
+                print(f"[+] Falling back to heuristic analysis...")
+                score, recommendations = password_strength(password)
+                print(f"[+] Heuristic Score: {score}/5")
+                
+        elif mode == "brute" or mode == "crack":
+            # Brute force test (only for numeric passwords)
+            if len(password) <= 4 and password.isdigit():
+                print(f"[+] Testing brute force resistance...")
+                charset = "0123456789"
+                success, duration = brute_force_crack(password, charset)
+                
+                if success:
+                    print(f"[!] Password CRACKED in {duration:.2f} seconds")
+                    print(f"[!] Recommendation: Use longer, complex passwords")
+                else:
+                    print(f"[+] Password survived brute force test")
+            else:
+                print(f"[-] Brute force test only supports 4-digit numeric passwords")
+                
+        else:
+            print(f"[-] Invalid mode: {mode}")
+            print(f"[+] Available modes: analyze, ml, brute")
+            
+    except Exception as e:
+        print(f"[-] Error: {e}")
+        import sys
+        sys.exit(1)
+
+if __name__ == "__main__":
+    run()
