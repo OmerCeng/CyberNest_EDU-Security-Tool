@@ -526,7 +526,21 @@ This tool is designed for **educational purposes only**. Users must:
 
 ### 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **CyberNest Educational License v1.0** - see the [LICENSE](LICENSE) file for details.
+
+#### 🎓 Educational Use
+- ✅ Free for personal learning and education
+- ✅ Academic research and teaching
+- ✅ Non-commercial distribution and modification
+
+#### 💼 Commercial Use
+- ❌ Commercial use **requires explicit written permission**
+- ❌ Cannot be sold or included in commercial products
+- ❌ Cannot be used in commercial penetration testing services
+
+For commercial licensing inquiries, please contact the author through GitHub.
+
+**This software is designed for educational purposes and authorized security testing only.**
 
 ### 🙏 Acknowledgments
 
